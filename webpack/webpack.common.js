@@ -18,8 +18,8 @@ function recursiveIssuer(m) {
 
 module.exports = {
   entry: {
-    app_en: Path.resolve(__dirname, '../src/scripts/index.js'),
-    app_ar: Path.resolve(__dirname, '../src/scripts/index.ar.js')
+    app: Path.resolve(__dirname, '../src/scripts/index.js'),
+    // app_ar: Path.resolve(__dirname, '../src/scripts/index.ar.js')
   },
   output: {
     path: Path.join(__dirname, '../build'),
@@ -29,17 +29,17 @@ module.exports = {
     splitChunks: {
       cacheGroups: {
         fooStyles: {
-          name: 'app_en',
-          test: (m,c,entry = 'app_en') => m.constructor.name === 'CssModule' && recursiveIssuer(m) === entry,
+          name: 'app',
+          test: (m,c,entry = 'app') => m.constructor.name === 'CssModule' && recursiveIssuer(m) === entry,
           chunks: 'all',
           enforce: true
         },
-        barStyles: {
-          name: 'app_ar',
-          test: (m,c,entry = 'app_ar') => m.constructor.name === 'CssModule' && recursiveIssuer(m) === entry,
-          chunks: 'all',
-          enforce: true
-        }
+        // barStyles: {
+        //   name: 'app_ar',
+        //   test: (m,c,entry = 'app_ar') => m.constructor.name === 'CssModule' && recursiveIssuer(m) === entry,
+        //   chunks: 'all',
+        //   enforce: true
+        // }
       }
     }
   },
@@ -47,15 +47,15 @@ module.exports = {
     new CleanWebpackPlugin(['build'], { root: Path.resolve(__dirname, '..') }),
     
     new HtmlWebpackPlugin({
-      filename: 'en/index.html',
-      template: Path.resolve(__dirname, '../src/en/index.pug'),
-      excludeAssets: [/app_ar.*.js/, /app_ar.*.css/]
+      filename: 'index.html',
+      template: Path.resolve(__dirname, '../src/index.pug'),
+      // excludeAssets: [/app_ar.*.js/, /app_ar.*.css/]
     }),
-    new HtmlWebpackPlugin({
-      filename: 'ar/index.html',
-      template: Path.resolve(__dirname, '../src/ar/index.pug'),
-      excludeAssets: [/app_en.*.js/, /app_en.*.css/]
-    }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'ar/index.html',
+    //   template: Path.resolve(__dirname, '../src/ar/index.pug'),
+    //   excludeAssets: [/app_en.*.js/, /app_en.*.css/]
+    // }),
     new HtmlWebpackExcludeAssetsPlugin()
   ],
   resolve: {

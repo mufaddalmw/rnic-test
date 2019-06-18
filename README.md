@@ -1,11 +1,6 @@
-# Prototype
+# Test
 
 ### Demo
-##### English
-https://d-u-prototype.netlify.com/en
-
-##### Arabic
-https://d-u-prototype.netlify.com/ar
 
 ### Installation
 
