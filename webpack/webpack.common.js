@@ -71,11 +71,11 @@ module.exports = {
         type: 'javascript/auto'
       },
       {
-        test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+        test: /\.(ico|jpg|jpeg|png|gif|svg)(\?.*)?$/,
         use: {
           loader: 'file-loader',
           options: {
-            name: 'assets/[name].[ext]',
+            name: 'images/[name].[ext]',
           }
         }
       },

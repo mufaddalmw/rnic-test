@@ -6,17 +6,42 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title Document
         link(href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700&display=swap", rel="stylesheet")
-        
+
     body
         header.site-header
-        .container
-            h1 Your Basket
-            p.text-sm Items you have added to your basket are shown below. Adjust the quantities or remove items before continuing your purchase.
-                | Product						      Price         Qty                Cost      
-            | Cotton T-Shirt, Medium
-            | Baseball Cap, One Size
-            | Swim Shorts, Medium
+        .container-sm
+            .basket
+                h1 Your Basket
+                p.text-sm Items you have added to your basket are shown below. Adjust the quantities or remove items before continuing your purchase.
+                br
+                br
+                br
+                | 						                                     
+                | 
+                | Baseball Cap, One Size
+                | Swim Shorts, Medium
 
-            | Subtotal
-            | VAT @ 20%
-            | Total Cost
+                | Subtotal
+                | VAT @ 20%
+                | Total Cost
+                table
+                    
+                    thead
+                        tr
+                            th Product
+                            th Price
+                            th Qty
+                            th Cost
+                            th
+                    tbody
+                        tr
+                            td(data-label='Account') Cotton T-Shirt, Medium
+                            td(data-label='Due Date') €1.99
+                            td(data-label='Amount') 
+                                input(type="text")
+                                button +
+                                button -
+                            td(data-label='Period') €1.99
+                            td 
+                                svg(role='img', title='Delete')
+                                    use(xlink:href='/images/sprite.svg#trash')
