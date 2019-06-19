@@ -7,3 +7,5 @@ import '../images/sprite.svg';
 // ===================== JS ===========================
 import svg4everybody from 'svg4everybody';
 svg4everybody();
+
+import './app.js';
