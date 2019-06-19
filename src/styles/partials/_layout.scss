@@ -15,14 +15,21 @@ body {
 
 h1 {
     font-weight: bold;
-    font-size: 1.875rem;
+    font-size: 1.875rem; //30px
 }
 
 .text-sm {
-    font-size: 0.875rem;
+    font-size: 0.875rem; //14px
 }
 
 .site-header {
     background: #000;
     padding: 3rem 0;
+}
+
+.inline-block {
+    display: inline-block!important;
+}
+.font-weight-bold {
+    font-weight: bold;
 }

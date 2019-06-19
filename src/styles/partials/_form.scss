@@ -1,0 +1,52 @@
+.form-control {
+    border: solid 1px #000;
+    padding: 0.5rem;
+    font-size: 1.125rem;
+}
+
+.btn-plus,
+.btn-minus {
+    width: 1rem;
+    height: 1rem;
+    border: 0 none;
+    padding: 0;
+    background: #999;
+    color: $white;
+    line-height: 1;
+    display: block;
+    transition: $transition-base;
+    position: relative;
+    
+    &:before {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 8px;
+        height: 16px;
+        text-align: center;
+    }
+
+    &:hover:not([disabled]), &:focus:not([disabled]) {
+        background: darken(#999, 10%);
+        outline-style: none;
+    }
+}
+.btn-plus {
+    &:before {
+        content: '+';
+    }
+}
+.btn-minus {
+    margin-top: 2px;
+    &:before {
+        content: '-';
+        height: 18px;
+    }
+}
+
+.btn-link {
+    padding: 0;
+    border: 0 none;
+    background: transparent;
+}

@@ -11,37 +11,81 @@ html(lang="en")
         header.site-header
         .container-sm
             .basket
-                h1 Your Basket
+                //- h1 Your Basket
                 p.text-sm Items you have added to your basket are shown below. Adjust the quantities or remove items before continuing your purchase.
                 br
                 br
                 br
                 | 						                                     
                 | 
-                | Baseball Cap, One Size
-                | Swim Shorts, Medium
+                //- | 
+                //- | 
 
-                | Subtotal
-                | VAT @ 20%
-                | Total Cost
-                table
-                    
+                //- | 
+                //- | 
+                //- | 
+                table.cart-table
                     thead
                         tr
                             th Product
                             th Price
                             th Qty
                             th Cost
-                            th
+                            th.action
                     tbody
                         tr
                             td(data-label='Account') Cotton T-Shirt, Medium
                             td(data-label='Due Date') €1.99
-                            td(data-label='Amount') 
-                                input(type="text")
-                                button +
-                                button -
+                            td(data-label='Amount')
+                                .quantity
+                                    input.form-control.inline-block(type="text", value="1")
+                                    .quantity__btn-wrapper.inline-block
+                                        button.btn.btn-plus 
+                                        button.btn.btn-minus 
                             td(data-label='Period') €1.99
-                            td 
-                                svg(role='img', title='Delete')
-                                    use(xlink:href='/images/sprite.svg#trash')
+                            td
+                                button.btn.btn-link
+                                    svg.icon-trash(role='img', title='Delete', width="20px", height="20px")
+                                        use(xlink:href='/images/sprite.svg#trash')
+                        
+                        tr
+                            td(data-label='Account') Baseball Cap, One Size
+                            td(data-label='Due Date') €2.99
+                            td(data-label='Amount')
+                                .quantity
+                                    input.form-control.inline-block(type="text", value="2")
+                                    .quantity__btn-wrapper.inline-block
+                                        button.btn.btn-plus 
+                                        button.btn.btn-minus 
+                            td(data-label='Period') €5.98
+                            td
+                                button.btn.btn-link
+                                    svg.icon-trash(role='img', title='Delete', width="20px", height="20px")
+                                        use(xlink:href='/images/sprite.svg#trash')
+                        
+                        tr
+                            td(data-label='Account') Swim Shorts, Medium
+                            td(data-label='Due Date') €3.99
+                            td(data-label='Amount')
+                                .quantity
+                                    input.form-control.inline-block(type="text", value="1")
+                                    .quantity__btn-wrapper.inline-block
+                                        button.btn.btn-plus 
+                                        button.btn.btn-minus 
+                            td(data-label='Period') €3.99
+                            td
+                                button.btn.btn-link
+                                    svg.icon-trash(role='img', title='Delete', width="20px", height="20px")
+                                        use(xlink:href='/images/sprite.svg#trash')
+
+                table.cart-total
+                    tr
+                        td Subtotal
+                        td €11.24
+                    tr
+                        td VAT @ 20%
+                        td €2.24
+                    tr.font-weight-bold
+                        td Total Cost
+                        td €14.24
+
