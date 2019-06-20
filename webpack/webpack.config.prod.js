@@ -32,12 +32,20 @@ module.exports = merge(common, {
         exclude: /node_modules/,
         use: 'babel-loader'
       },
+      // {
+      //   test: /\.s?styles/i,
+      //   use : [
+      //     MiniCssExtractPlugin.loader,
+      //     'css-loader',
+      //     'sass-loader'
+      //   ]
+      // }
       {
-        test: /\.s?styles/i,
-        use : [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader'
+        test: /\.(css|sass|scss)$/,
+        use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'sass-loader'
         ]
       }
     ]
