@@ -31,8 +31,17 @@ h1 {
     display: inline-block!important;
 }
 .font-weight-bold {
-    font-weight: bold;
+    font-weight: bold!important;
 }
 .text-right {
-    text-align: right;
+    text-align: right!important;
+}
+.text-left {
+    text-align: left!important;
+}
+.text-center {
+    text-align: center!important;
+}
+.hide {
+    display: none!important;
 }

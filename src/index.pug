@@ -16,28 +16,30 @@ html(lang="en")
                 br
                 br
                 br
-                
-                table.cart-table
-                    thead
+                form(action="", method="post")
+                    table.cart-table
+                        thead
+                            tr
+                                th Product
+                                th Price
+                                th Qty
+                                th Cost
+                                th.action
+                        tbody#basketItem
+                        tr.text-center.hide(data-noproudcts)
+                            td(colspan="5") No items to display
+                            
+                    table.cart-total
                         tr
-                            th Product
-                            th Price
-                            th Qty
-                            th Cost
-                            th.action
-                    tbody#basketItem
-                        
-                table.cart-total
-                    tr
-                        td Subtotal
-                        td(data-subtotal) 
-                    tr
-                        td VAT @ 20%
-                        td(data-vat) 
-                    tr.font-weight-bold
-                        td Total Cost
-                        td(data-totalcost) 
-                    tr
-                        td.text-right(colspan="2")
-                            button(type="submit") Buy Now &raquo;
+                            td Subtotal
+                            td(data-subtotal) 
+                        tr
+                            td VAT @ 20%
+                            td(data-vat) 
+                        tr.font-weight-bold
+                            td Total Cost
+                            td(data-totalcost) 
+                        tr
+                            td.text-right(colspan="2")
+                                button.btn.btn-primary(type="submit", data-submit) Buy Now &raquo;
 

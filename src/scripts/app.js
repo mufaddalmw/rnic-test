@@ -1,7 +1,6 @@
 import $ from 'jquery';
-
-
 class Basket {
+
     constructor() {
         // create a cart object
         this.basket = {
@@ -32,14 +31,17 @@ class Basket {
         
         this.renderCart();
         this.calcTotal();
+        this.checkCartLength();
 
         $(document)
             .on('click', '[data-quantity="plus"]', this.incrementValue)
             .on('click', '[data-quantity="minus"]', this.decrementValue)
             .on('keyup', '[data-quantity]', this.inputKeyPressCheck)
-            .on('click', '[data-delete]', this.deleteItem);
+            .on('click', '[data-delete]', this.deleteItem)
+            .on('click', '[data-submit]', this.submitCart);
         
     }
+
 
     incrementValue(e){
         // Stop acting like a button
@@ -57,7 +59,6 @@ class Basket {
             $(`input[name=${fieldName}]`).val(10);
         }
 
-
         const quantity = $(`input[name=${fieldName}]`).val();
         const price = $(`input[name=${fieldName}]`).attr('data-price');
         const id = $(`input[name=${fieldName}]`).attr('data-id');
@@ -66,6 +67,7 @@ class Basket {
         // call cost calc function
         cart.calcCost(id, name, price, quantity);
     }
+
 
     decrementValue(e){
         // Stop acting like a button
@@ -91,6 +93,7 @@ class Basket {
         // call cost calc function
         cart.calcCost(id, name, price, quantity);
     }
+
 
     inputKeyPressCheck(e){
         const $this = $(this);
@@ -122,8 +125,8 @@ class Basket {
             return true;
         }
 
-        
     }
+
 
     renderCart(){
         let markup = '';
@@ -135,14 +138,14 @@ class Basket {
                     <div class="quantity">
                         <input class="form-control inline-block" type="number" value=${item.quantity} data-quantity name="quantity${item.id}" min="1" max="10" maxlength="2" data-price="${item.price}" data-id="${item.id}" data-name="${item.name}">
                         <div class="quantity__btn-wrapper inline-block">
-                            <button class="btn btn-plus" data-quantity="plus" data-field="quantity${item.id}" data-price="${item.price}" data-id="${item.id}" data-name="${item.name}"></button>
-                            <button class="btn btn-minus" data-quantity="minus" data-field="quantity${item.id}" data-price="${item.price}" data-id="${item.id}" data-name="${item.name}"></button>
+                            <button type="button" class="btn btn-plus" data-quantity="plus" data-field="quantity${item.id}" data-price="${item.price}" data-id="${item.id}" data-name="${item.name}"></button>
+                            <button type="button" class="btn btn-minus" data-quantity="minus" data-field="quantity${item.id}" data-price="${item.price}" data-id="${item.id}" data-name="${item.name}"></button>
                         </div>
                     </div>
                 </td>
                 <td data-label="Period" data-cost${item.id}>€${item.price * item.quantity}</td>
                 <td>
-                    <button class="btn btn-link" data-itemid=${item.id} data-delete>
+                    <button type="button" class="btn btn-link" data-itemid=${item.id} data-delete>
                         <svg class="icon-trash" role="img" title="Delete" width="20px" height="20px">
                             <use xlink:href="/images/sprite.svg#trash"></use>
                         </svg>
@@ -154,6 +157,7 @@ class Basket {
         }
         
     }
+
 
     calcCost(id, name, price, quantity){
         // calc cost
@@ -170,6 +174,7 @@ class Basket {
         
         this.calcTotal();
     }
+
 
     calcTotal() {
         
@@ -202,6 +207,7 @@ class Basket {
         $('[data-totalcost]').text(`€${totalcost.toFixed(2)}`);
     }
 
+
     deleteItem(){
         
         const itemid = $(this).attr('data-itemid');
@@ -213,8 +219,44 @@ class Basket {
 
         // delete item in browser
         $(`#item${itemid}`).remove();
+
+        cart.checkCartLength();
     }
 
+
+    checkCartLength(){
+        if (this.basket.items.length === 0) {
+            $('[data-noproudcts]').removeClass('hide');
+            $('[data-submit]').attr('disabled', true);
+        }
+        else {
+            $('[data-noproudcts]').addClass('hide');
+            $('[data-submit]').attr('disabled', false);
+        }
+    }
+
+
+    submitCart(e){
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "https://jsonplaceholder.typicode.com/posts",
+            data: JSON.stringify( cart.basket ),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                alert('Ajax call is complete, please check browser console for submitted object'); 
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+
+    }
+
+
 }
+
 
 let cart = new Basket();
