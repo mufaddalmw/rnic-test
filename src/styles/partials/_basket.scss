@@ -1,38 +1,150 @@
 .basket {
     padding: 4rem 0;
+    @include media-breakpoint-down(sm){
+        padding: 2rem 0;
+    }
     
 }
 
 table.cart-table {
     width: 100%;
-    th {
+    margin-top: 3rem;
+    @include media-breakpoint-down(sm){
+        margin-top: 1.5rem;
+    }
+    th:not(:last-child) {
         font-weight: bold;
         font-size: 1.125rem;
         border-bottom: solid 1px #000;
-        padding: 0 1rem;
+        padding: 0 0.875rem;
         text-align: center;
         &:first-child {
             text-align: left;
         }
         &.action {
-            border-bottom: none;
+            width: 30px;
+        }
+        &.cost {
+            width: 80px;
+        }
+        &.qty {
+            width: 90px;
+        }
+        &.price {
+            width: 50px;
         }
     }
 
-    td {
-        padding: 1rem;
+    td:not(:last-child) {
+        padding: 0.75rem 0.875rem;
         & + td {
             text-align: right;
         }
+        @include media-breakpoint-down(sm) {
+            padding: 0.25rem 0.5rem;
+        }
     }
+    tr:nth-child(even)  {
+        
+        @include media-breakpoint-up(sm){
+            td:not(:last-child) {
+                background-color: #dddddd;
+            }
+        }
+        @include media-breakpoint-down(sm){
+            background-color: #dddddd;
+        }
+        
+        
+    }
+    
 }
+
+@include media-breakpoint-down(sm){
+    table.cart-table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+    
+    table.cart-table tr {
+        
+        display: block;
+        padding: 0.75rem 0;
+        &:first-child {
+            border-top: solid 1px #ddd;
+        }
+        // + tr {
+        //     margin-top: 2rem;
+        // }
+    }
+    
+    table.cart-table td {
+        // border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: 0.875rem;
+        text-align: right;
+        
+    }
+    
+    table.cart-table td::before {
+        /*
+        * aria-label has no advantage, it won't be read inside a table.cart-table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        
+    }
+    
+    
+}
+
 
 table.cart-total {
     width: 100%;
+    margin-top: 2.5rem;
+    @include media-breakpoint-down(sm){
+        margin-top: 1rem;
+    }
+    
     td {
-        padding: 0 1rem;
+        padding: 0 0.625rem;
+        color: #666666;
         & + td {
             text-align: right;
+        }
+        @include media-breakpoint-up(sm){
+            padding: 0 1rem;
+        }
+        &:last-child {
+            @include media-breakpoint-up(sm){
+                padding-right: 44px;
+            }
+            
+        }
+    }
+    tr.total {
+        td {
+            padding-top: 1rem;
+            color: $black;
+            @include media-breakpoint-down(sm){
+                padding-top: 0.75rem;
+            }
+        }
+    }
+    tr.submitbtn {
+        td {
+            padding-top: 2.5rem;
+            @include media-breakpoint-down(sm){
+                padding-top: 1.5rem;
+            }
         }
     }
 }
@@ -47,7 +159,6 @@ table.cart-total {
 
     &__btn-wrapper {
         vertical-align: top;
-        margin-left: 3px;
     }
 }
 

@@ -27,6 +27,13 @@ input[type=number]::-webkit-outer-spin-button {
     display: block;
     transition: $transition-base;
     position: relative;
+    @include media-breakpoint-down(sm) {
+        width: 2.125rem;
+        height: 2.125rem;
+        display: inline-block;
+        vertical-align: top;
+
+    }
     
     &:before {
         position: absolute;
@@ -36,6 +43,11 @@ input[type=number]::-webkit-outer-spin-button {
         width: 8px;
         height: 16px;
         text-align: center;
+        @include media-breakpoint-down(sm){
+            font-size: 1.25rem;
+            height: 20px;
+            width: 16px;
+        }
     }
 
     &:hover:not([disabled]), &:focus:not([disabled]) {
@@ -49,10 +61,16 @@ input[type=number]::-webkit-outer-spin-button {
     }
 }
 .btn-minus {
-    margin-top: 2px;
+    
+    @include media-breakpoint-up(sm){
+        margin-top: 2px;
+    }
     &:before {
         content: '-';
-        height: 18px;
+        @include media-breakpoint-up(sm){
+            height: 18px;
+        }
+        
     }
 }
 
@@ -65,12 +83,17 @@ input[type=number]::-webkit-outer-spin-button {
 .btn-primary {
     background: $primary;
     color: $white;
-    border-radius: 5px;
+    border-radius: 10px;
     font-weight: bold;
     padding: 0.5rem 1.125rem;
     transition: $transition-base;
     box-shadow: 5px 5px 9px -2px rgba(0,0,0,0.75);
     border: 0 none;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    @include media-breakpoint-down(sm){
+        font-size: 1.15rem;
+    }
 
     &:hover:not([disabled]), &:focus:not([disabled]) {
         background: darken($primary, 10%);

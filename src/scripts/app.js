@@ -22,6 +22,12 @@ class Basket {
                     name: 'Swim Shorts, Medium',
                     price: "3.99",
                     quantity: "1"
+                },
+                {
+                    id: "4",
+                    name: 'Sports Swimming Goggle',
+                    price: "2.49",
+                    quantity: "1"
                 }
             ],
             subtotal: "",
@@ -36,7 +42,7 @@ class Basket {
         $(document)
             .on('click', '[data-quantity="plus"]', this.incrementValue)
             .on('click', '[data-quantity="minus"]', this.decrementValue)
-            .on('keyup', '[data-quantity]', this.inputKeyPressCheck)
+            .on('keyup', '[data-quantity="field"]', this.inputKeyPressCheck)
             .on('click', '[data-delete]', this.deleteItem)
             .on('click', '[data-submit]', this.submitCart);
         
@@ -132,18 +138,18 @@ class Basket {
         let markup = '';
         for (const item of this.basket.items) {
             markup += `<tr id="item${item.id}">
-                <td data-label="Account">${item.name}</td>
-                <td data-label="Due Date">€${item.price}</td>
-                <td data-label="Amount">
+                <td data-label="Product">${item.name}</td>
+                <td data-label="Price">€${item.price}</td>
+                <td data-label="Qty">
                     <div class="quantity">
-                        <input class="form-control inline-block" type="number" value=${item.quantity} data-quantity name="quantity${item.id}" min="1" max="10" maxlength="2" data-price="${item.price}" data-id="${item.id}" data-name="${item.name}">
+                        <input class="form-control inline-block" type="number" value=${item.quantity} data-quantity="field" name="quantity${item.id}" min="1" max="10" maxlength="2" data-price="${item.price}" data-id="${item.id}" data-name="${item.name}">
                         <div class="quantity__btn-wrapper inline-block">
                             <button type="button" class="btn btn-plus" data-quantity="plus" data-field="quantity${item.id}" data-price="${item.price}" data-id="${item.id}" data-name="${item.name}"></button>
                             <button type="button" class="btn btn-minus" data-quantity="minus" data-field="quantity${item.id}" data-price="${item.price}" data-id="${item.id}" data-name="${item.name}"></button>
                         </div>
                     </div>
                 </td>
-                <td data-label="Period" data-cost${item.id}>€${item.price * item.quantity}</td>
+                <td data-label="Cost" data-cost${item.id}>€${item.price * item.quantity}</td>
                 <td>
                     <button type="button" class="btn btn-link" data-itemid=${item.id} data-delete>
                         <svg class="icon-trash" role="img" title="Delete" width="20px" height="20px">
@@ -241,12 +247,13 @@ class Basket {
         $.ajax({
             type: "POST",
             url: "https://jsonplaceholder.typicode.com/posts",
+            // assign "cart.basket" object to data attr
             data: JSON.stringify( cart.basket ),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
                 console.log(data);
-                alert('Ajax call is complete, please check browser console for submitted object'); 
+                alert('Ajax post request complete, please check browser console or network tab for submitted response.'); 
             },
             failure: function (errMsg) {
                 alert(errMsg);

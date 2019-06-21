@@ -9,21 +9,24 @@ html(lang="en")
 
     body
         header.site-header
-        .container-sm
+            .container
+                a.site-header__logo(href="/index.html")
+                    img(src="./images/logo.png", alt="Revonic", srcset="./images/logo@2x.png 2x")
+        .container.container-sm
             .basket
-                //- h1 Your Basket
-                p.text-sm Items you have added to your basket are shown below. Adjust the quantities or remove items before continuing your purchase.
-                br
-                br
-                br
+                h1 Your Basket
+                p.text-sm Items you have added to your basket are shown below. 
+                    br
+                    | Adjust the quantities or remove items before continuing your purchase.
+                
                 form(action="", method="post")
                     table.cart-table
                         thead
                             tr
                                 th Product
-                                th Price
-                                th Qty
-                                th Cost
+                                th.price Price
+                                th.qty Qty
+                                th.cost Cost
                                 th.action
                         tbody#basketItem
                         noscript Your browser javascript is disabled.
@@ -37,10 +40,14 @@ html(lang="en")
                         tr
                             td VAT @ 20%
                             td(data-vat) 
-                        tr.font-weight-bold
+                        tr.font-weight-bold.total
                             td Total Cost
                             td(data-totalcost) 
-                        tr
+                        tr.submitbtn
                             td.text-right(colspan="2")
                                 button.btn.btn-primary(type="submit", data-submit) Buy Now &raquo;
+            
+        footer.site-footer
+            .container.container-sm
+                p.m-0 &copy; <strong>2019 REVONIC Ltd</strong>. Registered in DUBAI
 
