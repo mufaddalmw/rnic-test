@@ -153,7 +153,7 @@ class Basket {
                 <td>
                     <button type="button" class="btn btn-link" data-itemid=${item.id} data-delete>
                         <svg class="icon-trash" role="img" title="Delete" width="20px" height="20px">
-                            <use xlink:href="/images/sprite.svg#trash"></use>
+                            <use xlink:href="../images/sprite.svg#trash"></use>
                         </svg>
                     </button>
                 </td>
