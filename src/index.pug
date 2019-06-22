@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-html(lang="en")
+//- <!DOCTYPE html>
+html(lang="en-US")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
@@ -8,6 +8,8 @@ html(lang="en")
         link(href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700&display=swap", rel="stylesheet")
 
     body
+        noscript 
+            h1 Your browser javascript is disabled.
         header.site-header
             .container
                 a.site-header__logo(href="/index.html")
@@ -19,7 +21,7 @@ html(lang="en")
                     br
                     | Adjust the quantities or remove items before continuing your purchase.
                 
-                form(action="", method="post")
+                form(action="#", method="post")
                     table.cart-table
                         thead
                             tr
@@ -29,7 +31,7 @@ html(lang="en")
                                 th.cost Cost
                                 th.action
                         tbody#basketItem
-                        noscript Your browser javascript is disabled.
+                            
                         tr.text-center.hide(data-noproudcts)
                             td(colspan="5") No items to display
                             

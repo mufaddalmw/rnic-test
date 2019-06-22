@@ -244,6 +244,7 @@ class Basket {
 
     submitCart(e){
         e.preventDefault();
+        
         $.ajax({
             type: "POST",
             url: "https://jsonplaceholder.typicode.com/posts",
@@ -251,15 +252,18 @@ class Basket {
             data: JSON.stringify( cart.basket ),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
+            crossDomain: true,
             success: function (data) {
                 console.log(data);
                 alert('Ajax post request complete, please check browser console or network tab for submitted response.'); 
+                
             },
             failure: function (errMsg) {
                 alert(errMsg);
+                
             }
         });
-
+        console.log(cart.basket);
     }
 
 
