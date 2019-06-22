@@ -1,7 +1,7 @@
-# RNic Test
-
 ### Demo
+
 http://mufaddalmw.github.io/rnic-test/build
+
 
 ### Installation
 
@@ -26,7 +26,7 @@ npm run build
 
 **Delete functionality** - Once user delete an item, it removes item from view and deletes item from javascript object.
 
-**Submit functionality** - Once user clicks "Buy Now" button, post request is sent via ajax call where final object with items, subtotal, VAT and total cost are displayed in browser console or network tab (post). For placeholder URL https://jsonplaceholder.typicode.com/posts is used inside ajax call.
+**Submit functionality** - Once user clicks "Buy Now" button, post request is sent via ajax call. After succesful submission of post request final object with items, subtotal, VAT and total cost are displayed in browser console or network tab (post). For placeholder URL https://jsonplaceholder.typicode.com/posts is used inside ajax call.
 
 ### Tools and libraries:
 
