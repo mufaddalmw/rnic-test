@@ -57,7 +57,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     &:hover:not([disabled]), &:focus:not([disabled]) {
         background: darken(#999, 10%);
-        
+        outline-style: none;
     }
 }
 .btn-plus {
